@@ -12,7 +12,7 @@ class GameAnswersController < ApplicationController
     @game_answer = GameAnswer.new(game_answer_params)
     if @game_answer.save
       cant_answers =  @game_answer.count_answers
-      if cant_answers >= 2
+      if cant_answers >= 5
         # juego terminado
         game = @game_answer.game
         GameMailer.with( game: game ).game_result.deliver_later unless game.email.empty?
