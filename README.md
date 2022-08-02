@@ -5,20 +5,19 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version 3.1.0
 
-* System dependencies
+* System dependencies: se debe correr bundle
 
-* Configuration
+* Configuration: se debe tener un archivo local_env.yml dentro de carpeta config con la siguiente estructura
+DB_USERNAME: 'user'
+DB_PASSWORD: 'password'
+EMAIL: 'ejemplo@dominio.com'
+EMAIL_PASSWORD: 'clave del email'
+EMAIL_HOST: 'dominio.com'
+EMAIL_ADDRESS: 'mail.dominio.com'
 
-* Database creation
+* Database creation: db:create
 
-* Database initialization
+* Database initialization:  db:seed
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
