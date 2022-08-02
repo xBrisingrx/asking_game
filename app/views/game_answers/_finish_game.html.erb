@@ -1,0 +1,8 @@
+<h3>Resultados:</h3>
+<p>Jugador:  <%= game.player %> </p>
+<p> puntaje: <%= game.score %> </p>
+<hr>
+<p>Respuestas correctas: <%= game.correct_answers %> </p>
+<p>Respuestas incorrectas: <%= game.wrong_answers %> </p>
+
+<%= link_to "Reiniciar juego", games_path, class: "btn btn-primary btn-block"%>

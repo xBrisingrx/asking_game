@@ -1,0 +1,8 @@
+<tr>
+  <td> <%= question.question %> </td>
+  <td> <%= question.score %> </td>
+  <td> 
+    <%= link_to "Respuestas", answers_path(question_id: question.id), class: "btn btn-info", title: "Respuestas" %> 
+    <%= link_to "Editar", edit_question_path(question), class: "btn btn-warning" %>
+  </td>
+</tr>

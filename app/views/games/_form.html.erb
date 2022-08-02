@@ -1,0 +1,31 @@
+<%= form_with model: @game do |form| %>
+  <div class="form-group">
+    <%= form.label :player, "Nombre de jugador (*): " %>
+    <%= form.text_field :player, class: "form-control col-6", required: true %>
+  </div>
+  <div class="form-group">
+    <%= form.label :email, "Email: " %>
+    <%= form.email_field :email, class: "form-control col-6", placeholder: "Si desea recibir un email con los resultados" %>
+  </div>
+  <div class="form-group row my-2">
+    <div class="mb-2">
+      <%= form.label :category_id, "Categoria en la que desea jugar" %>
+    </div>
+    <div>
+      <% @categories.each do |category|%>
+        <label class="radio col-4">
+          <div>
+            <% if category.image.attached? %>
+              <%= image_tag(category.image, size: "200X200", alt: "Category image") %>
+            <% end %>
+            <%= form.radio_button :category_id, category.id %>
+          </div>
+          <span class="badge text-bg-primary"><%= category.name %></span>
+        </label>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-6">
+    <%= form.submit "Empezar", class: "btn btn-success btn-block"%>
+  </div>
+<% end %>

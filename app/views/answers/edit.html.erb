@@ -1,0 +1,4 @@
+<h1>Editar respuesta a la pregunta: </h1>
+<h3> <%= @answer.question.question %> </h3>
+
+<%= render partial:"form", locals: {answer: @answer,question_id: @answer.question_id } %>

@@ -1,0 +1,16 @@
+<h1>Respuestas</h1>
+<h3> <%= @question.question %></h3>
+<%= link_to "<i class='fui-arrow-left'></i> Volver".html_safe, questions_path, class: "btn btn-info mt-2 mb-4 mr-4" %>
+<%= link_to "<i class='fui-plus'></i> Agregar respueta".html_safe, new_answer_path(question_id: @question.id), class: "btn btn-primary mt-2 mb-4" %>
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+      <td>Respuesta</td>
+      <td>Es correcta</td>
+      <td>Acciones</td>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @answers %>
+  </tbody>
+</table>

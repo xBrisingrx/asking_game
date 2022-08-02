@@ -1,0 +1,4 @@
+<%= turbo_frame_tag "game" do %>
+  <h2 class="text-center"> Iniciar juego </h2>
+  <%= render 'form', locals: {game: @game, categories: @categories}%>
+<% end %>

@@ -1,0 +1,30 @@
+<header class="p-3 mb-3 border-bottom">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <%= link_to "Q&A", root_path, class:"d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none" %>
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><%= link_to "Comenzar juego", games_path, class:"nav-link px-2 link-dark" %></li>
+        <% if logged_in? %>
+          <li><%= link_to "Ver ranking", games_ranking_path, class:"nav-link px-2 link-dark" %></li>
+          <li><%= link_to "Preguntas", questions_path, class:"nav-link px-2 link-dark"%></li>
+          <li><%= link_to "Categorias", categories_path, class:"nav-link px-2 link-dark"%></li>
+          <li><%= link_to "Usuarios", users_path, class:"nav-link px-2 link-dark"%></li>
+        <% end %>
+      </ul>
+      <% if logged_in? %>
+      <div class="dropdown text-end">
+        <%= link_to "#", class: "d-block link-dark text-decoration-none dropdown-toggle", data: {"bs-toggle": "dropdown"}, aria: { expanded: "false"} do %>
+          <%= image_tag('user.png', size: "32X32", alt: "user image", class:"rounded-circle") %>
+        <%end%>
+        <ul class="dropdown-menu text-small" style="">
+          <li><%= link_to "Cerrar sesion", session_path(current_user.id), data:{ turbo_method: :delete}, class:"dropdown-item" %></li>
+        </ul>
+      </div>
+      <%else%>
+        <div class="col-md-3 text-end">
+          <%= link_to "Iniciar sesion", new_session_path, class:"btn btn-outline-primary me-2" %>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</header>

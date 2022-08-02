@@ -1,0 +1,12 @@
+<tr>
+  <td> <%= answer.answer %> </td>
+  
+  <% if answer.is_correct? %>
+    <td><span class="fui-check-circle"></span></td>
+  <%else%>
+    <td><span class="fui-cross-circle"></span></td>
+  <%end%>
+  <td>
+    <%= link_to "Editar", edit_answer_path(answer), class: "btn btn-warning" %>
+  </td>
+</tr>

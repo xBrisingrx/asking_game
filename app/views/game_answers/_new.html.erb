@@ -1,0 +1,17 @@
+<%= turbo_frame_tag "game" do %>
+  <%= form_with model: game_answer do |form| %>
+    <div class="col">
+      <h3 class="demo-panel-title"><%= question.question %></h3>
+      <%= form.hidden_field :question_id, value: question.id %>
+      <%= form.hidden_field :game_id, value: game_id %>
+      <% question.answers.each do |answer|%>
+        <label class="radio">
+          <%= form.radio_button :answer_id, answer.id %>
+          <%= answer.answer %>
+        </label>
+      <% end %>
+    </div>
+    <%= form.submit submit_button, class:"btn btn-success" %>
+    <%= link_to 'Abandonar', games_path, class: "btn btn-danger" %>
+  <% end %>
+<% end %>

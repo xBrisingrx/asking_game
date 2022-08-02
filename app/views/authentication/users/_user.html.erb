@@ -1,0 +1,17 @@
+<tr>
+  <td><%= user.username %></td>
+  <td><%= user.email %></td>
+  <td>
+    <% if user.admin? %>
+      Administrador
+    <% else %>
+      Editor
+    <% end %>
+  </td>
+  <td> 
+    <%= link_to 'Editar', edit_user_path(user), class: "btn btn-warning" %>
+    <% if policy(:user).destroy? %>
+      <%= link_to "Eliminar", user_path(user.id), data:{ turbo_method: :delete}, class:"btn btn-danger" %>  
+    <% end %>
+  </td>
+</tr>

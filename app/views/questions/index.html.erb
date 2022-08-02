@@ -1,0 +1,19 @@
+<h1>Preguntas</h1>
+<%= link_to"<i class='fui-plus'></i> Nueva pregunta".html_safe, new_question_path, class: "btn btn-primary mt-2 mb-4" %>
+<table class="table table-hover">
+  <thead class="table-dark">
+    <tr>
+      <td>Pregunta</td>
+      <td>Puntaje</td>
+      <td>Acciones</td>
+    </tr>
+  </thead>
+  <tbody>
+    <%= turbo_frame_tag "questions-#{@pagy.page}" do%>
+      <%= render @questions %>
+    <%end%>
+  </tbody>
+</table>
+<div class="pagination">
+  <%== pagy_bootstrap_nav(@pagy, link_extra: 'data-turbo-action="advance"') %>
+</div>
