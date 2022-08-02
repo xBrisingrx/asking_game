@@ -10,7 +10,7 @@
   </td>
   <td> 
     <%= link_to 'Editar', edit_user_path(user), class: "btn btn-warning" %>
-    <% if policy(:user).destroy? %>
+    <% if policy(:user).destroy? && current_user.id != user.id %>
       <%= link_to "Eliminar", user_path(user.id), data:{ turbo_method: :delete}, class:"btn btn-danger" %>  
     <% end %>
   </td>
