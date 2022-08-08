@@ -8,7 +8,7 @@ set :application, "asking_game"
 set :repo_url, "git@github.com:xBrisingrx/asking_game.git"
 
 set :branch, :main 
-set :user, 'eragon'
+set :user, 'mauro'
 set :puma_threads, [4,16]
 set :puma_workers, 0 
 
