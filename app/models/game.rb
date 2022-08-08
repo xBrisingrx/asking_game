@@ -14,4 +14,5 @@ class Game < ApplicationRecord
   def wrong_answers
     self.answers.where(is_correct: false).count
   end
+
 end
