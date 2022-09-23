@@ -1,3 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto');
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
 @import "./animate.min.css";
+@import "./congratulation.scss";
+
+
+.zoom {
+	&:hover {
+		transform: scale(1.2);
+    transition: transform .2s;
+	}
+}
+
+.selected {
+  transform: scale(1.2);
+}

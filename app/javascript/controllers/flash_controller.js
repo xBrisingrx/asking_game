@@ -18,6 +18,7 @@ export default class extends Controller {
       const animationName = `animate__${animation}`;
       const node = this.element;
       node.classList.add("animate__animated", animationName);
+      node.style.setProperty('--animate-duration', '6.0s');
 
       // When the animation ends, we clean the classes and resolve the Promise
       function handleAnimationEnd(event) {

@@ -15,11 +15,18 @@ class GameAnswersController < ApplicationController
       if cant_answers >= 5
         # juego terminado
         game = @game_answer.game
-        GameMailer.with( game: game ).game_result.deliver_later unless game.email.empty?
+        aprobado = (game.correct_answers > 3) ? "aprobado" : "negativo"
+        if game.correct_answers > 3
+          flash.now[:notice] = "Felicitaciones aprobaste!."
+        else
+          flash.now[:alert] = "Tenes que estudiar más."
+        end
+        # GameMailer.with( game: game ).game_result.deliver_later unless game.email.empty?
         render turbo_stream: [
           turbo_stream.replace("game", 
             partial: "finish_game", 
-            locals: { game: @game_answer.game })
+            locals: { game: @game_answer.game, aprobado:  }),
+            turbo_stream.replace("notice", partial: "layouts/flash")
         ]
       else
         question = @game_answer.question_not_used
@@ -33,8 +40,16 @@ class GameAnswersController < ApplicationController
         ]
       end
     else 
-      puts "#{@game_answer.errors.messages}"
-      render :new, status: :unprocessable_entity
+      question = Question.select(:id, :question, :category_id).find @game_answer.question_id
+      render turbo_stream: [
+        turbo_stream.replace("game", 
+          partial: "new", 
+          locals: { question: question, 
+            game_answer: @game_answer,
+            game_id: @game_answer.game_id,
+            submit_button: "Siguiente" }
+        ), status: :unprocessable_entity
+      ]
     end
   end
 

@@ -1,31 +1,31 @@
-<%= form_with model: @game do |form| %>
-  <div class="form-group">
-    <%= form.label :player, "Nombre de jugador (*): " %>
-    <%= form.text_field :player, class: "form-control col-6", required: true %>
+<%= form_with model: @game, class:"mx-auto",data: {controller:"form"} do |form| %>
+  <div class="col-6 mx-auto mt-4">
+    <%= form.text_field :player, class: "form-control form-control-lg", required: true, placeholder: "Nombre de jugador/a", autofocus:true %>
   </div>
-  <div class="form-group">
-    <%= form.label :email, "Email: " %>
-    <%= form.email_field :email, class: "form-control col-6", placeholder: "Si desea recibir un email con los resultados" %>
-  </div>
-  <div class="form-group row my-2">
-    <div class="mb-2">
-      <%= form.label :category_id, "Categoria en la que desea jugar" %>
+  
+  <div class="form-group row my-4">
+    <div class="mb-2 text-center">
+      <%= form.label :category_id, "Categoria en la que desea jugar", class: 'h3' %>
     </div>
-    <div>
-      <% @categories.each do |category|%>
-        <label class="radio col-4">
+    <div class="row justify-content-evenly">
+      <% @categories.each do |category| %>
+        <label class="radio col-4 text-center">
           <div>
             <% if category.image.attached? %>
-              <%= image_tag(category.image, size: "200X200", alt: "Category image") %>
+              <%= image_tag(category.image, size: "200X200", alt: "Category image", class: "rounded zoom radio", data: {action:"click->form#selected", item: "id-param-#{category.id}"}) %>
             <% end %>
-            <%= form.radio_button :category_id, category.id %>
+            <div style="display:none">
+              <%= form.radio_button :category_id, category.id %>
+            </div>
           </div>
-          <span class="badge text-bg-primary"><%= category.name %></span>
+          <div class="mt-3">
+            <span class="badge text-bg-primary"><%= category.name %></span>
+          </div>
         </label>
       <% end %>
     </div>
   </div>
-  <div class="col-6">
-    <%= form.submit "Empezar", class: "btn btn-success btn-block"%>
+  <div class="d-grid gap-2 col-6 mx-auto mt-4">
+    <%= form.submit "Empezar", class: "btn btn-success btn-block mt-4"%>
   </div>
 <% end %>

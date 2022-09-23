@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+.wrapper {
+  position: relative;
+  min-height: 100vh;
+}
+
+[class|="confetti"] {
+  position: absolute;
+}
+
+.red {
+  background-color: #d13447;
+}
+
+.yellow {
+  background-color: #ffbf00;
+}
+
+.blue {
+  background-color: #263672;
+}
