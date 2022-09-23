@@ -15,6 +15,7 @@ class GameAnswersController < ApplicationController
       if cant_answers >= 5
         # juego terminado
         game = @game_answer.game
+        game.update(completed:true)
         aprobado = (game.correct_answers > 3) ? "aprobado" : "negativo"
         if game.correct_answers > 3
           flash.now[:notice] = "Felicitaciones aprobaste!."

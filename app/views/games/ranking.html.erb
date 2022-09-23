@@ -9,7 +9,7 @@
   </thead>
   <tbody>
     <% @games.each do |game|%>
-      <% if game.game_answers.count >= 5 %>
+      <% if game.completed %>
         <tr>
           <td><%= game.player%></td>
           <th> 
