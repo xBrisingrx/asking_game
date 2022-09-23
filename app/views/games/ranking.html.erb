@@ -12,7 +12,12 @@
       <% if game.game_answers.count >= 5 %>
         <tr>
           <td><%= game.player%></td>
-          <th> <%= game.score%> </th>
+          <th> 
+            <%= game.score%>
+            <% if game.score > 1 %>
+              <%= inline_svg_tag 'star.svg', with: 20, height: 20%>
+            <% end %> 
+          </th>
         </tr>
       <% end %>
     <%end%>
