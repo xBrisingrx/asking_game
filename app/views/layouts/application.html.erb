@@ -13,7 +13,7 @@
   <body>
     <%= render  partial: "layouts/nav"%>
     <div class="container">
-      <%= render partial: "layouts/flash" %>
+      <%= render partial: "layouts/flash", locals: { time_alert: @time_alert, effect_alert: @effect_alert } %>
       <%= yield %>
     </div>
   </body>

@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: %i[ show edit update destroy ]
   before_action :set_categories, only: %i[ new create edit update ]
+  before_action :set_time_alert, only: %i[ create update destroy]
 
   # GET /questions or /questions.json
   def index
@@ -72,4 +73,9 @@ class QuestionsController < ApplicationController
     def question_params
       params.require(:question).permit(:question, :score, :category_id, :image)
     end
+
+    def set_time_alert
+      @time_alert = '3'
+    end
+
 end

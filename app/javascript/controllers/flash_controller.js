@@ -4,21 +4,23 @@ import { Controller } from "@hotwired/stimulus";
 export default class extends Controller {
   connect() {
     const node = this.element;
-
-    this.animateCSS("rubberBand").then(() => {
-      this.animateCSS("zoomOut").then(() => {
+    const time = node.dataset.tiempo
+    const effect = node.dataset.effect
+    // effect default: rubberBand
+    this.animateCSS(effect, time).then(() => {
+      this.animateCSS("zoomOut", time).then(() => {
         node.style.visibility = "hidden";
       });
     });
   }
 
-  animateCSS(animation) {
+  animateCSS(animation, time) {
     // We create a Promise and return it
     return new Promise((resolve, _reject) => {
       const animationName = `animate__${animation}`;
       const node = this.element;
       node.classList.add("animate__animated", animationName);
-      node.style.setProperty('--animate-duration', '6.0s');
+      node.style.setProperty('--animate-duration', `${time}.0s`);
 
       // When the animation ends, we clean the classes and resolve the Promise
       function handleAnimationEnd(event) {

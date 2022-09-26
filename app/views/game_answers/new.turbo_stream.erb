@@ -1,0 +1,36 @@
+<%= turbo_stream.update "game" do %>
+  <%= form_with model: @game_answer do |form| %>
+    <div class="col">
+      <h3 class="demo-panel-title text-center h2 my-4"><%= @question.question %></h3>
+      <%= form.hidden_field :question_id, value: @question.id %>
+      <%= form.hidden_field :game_id, value: @game_answer.game_id %>
+      <div class="shadow-lg p-3 mb-5 bg-body rounded col-8 mx-auto">
+        <% if @question.image.attached? %>
+          <div mx-aut0 mb-2>
+            <%= image_tag(@question.image, size: "200X200", alt: "Question image", class: "rounded") %>
+          </div>
+        <% end %>
+        <% @question.answers.each do |answer|%>
+          <div class="form-check">
+            <%= form.radio_button :answer_id, answer.id, class:"form-check-input" %>
+            <label class="form-check-label">
+              <%= answer.answer%>
+            </label>
+          </div>
+        <% end %>
+        <% if !@msg_error.nil? %>
+          <div class="alert alert-danger d-flex align-items-center" role="alert">
+            <%= inline_svg_tag 'stop.svg', with: 20, height: 20%>
+            <div>
+              <%= @msg_error %>
+            </div>
+          </div>
+        <% end %>
+        <div class="mt-4">
+          <%= form.submit @submit_button, class:"btn btn-success" %>
+          <%= link_to 'Abandonar', games_path, class: "btn btn-danger" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

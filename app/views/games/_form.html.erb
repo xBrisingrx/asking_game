@@ -24,6 +24,18 @@
         </label>
       <% end %>
     </div>
+    <% if !@msg_error.nil? %>
+      <div class="row justify-content-center">
+        <div class="col-4">
+          <div class="alert alert-danger d-flex justify-content-center p-2 flex-row mb-3" role="alert">
+            <%= inline_svg_tag 'stop.svg', with: 20, height: 20%>
+            <div>
+              <%= @msg_error %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
   <div class="d-grid gap-2 col-6 mx-auto mt-4">
     <%= form.submit "Empezar", class: "btn btn-success btn-block mt-4"%>

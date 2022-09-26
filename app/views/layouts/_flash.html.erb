@@ -1,11 +1,13 @@
-<div id="notice" data-controller="flash" class="col-6 mx-auto">
+<div id="notice" data-controller="flash" class="col-6 mx-auto" 
+  data-tiempo="<%= (time_alert.nil?) ? '2' : time_alert %>" 
+  data-effect="<%= (effect_alert.nil?) ? 'rubberBand' : effect_alert %>">
   <% if notice.present? %>
     <div class="alert alert-primary alert-dismissible text-center" role="alert">
       <%= notice %>
     </div>
   <% end %>
   <% if alert.present? %>
-    <div class="alert alert-danger alert-dismissible text-center" role="alert">
+    <div class="alert alert-danger alert-dismissible text-center" role="alert" >
       <%= alert %>
     </div>
   <% end %>

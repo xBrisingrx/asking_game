@@ -1,5 +1,6 @@
 class Authentication::UsersController < ApplicationController
   before_action :set_user, only: %i[ edit update destroy ]
+  before_action :set_time_alert, only: %i[ create update destroy]
   def index
     @users = User.all
   end
@@ -50,6 +51,11 @@ class Authentication::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :email, :password, :admin)
+    params.require(:user).permit(:username, :email, :password, :admin, :avatar)
   end
+
+  def set_time_alert
+    @time_alert = '3'
+  end
+
 end

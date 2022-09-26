@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
   skip_before_action :no_login, only: [:index, :new, :create]
   before_action :set_categories, only: [:index, :new, :create]
+  before_action :set_time_alert, only: %i[ index create update destroy]
   def index
     @game = Game.new
   end
@@ -25,12 +26,24 @@ class GamesController < ApplicationController
           })
       ]
     else 
-      render :new, status: :unprocessable_entity
+      @msg_error = "Debes seleccionar una categoría"
+      # render :new, status: :unprocessable_entity
+      render turbo_stream: [
+        turbo_stream.update("game", partial: "form")
+      ]
     end
   end
 
-  def ranking
-    @pagy, @games = pagy( Game.all.order(score: 'DESC', player: "ASC"), items:10 )
+  def ranking_manejo
+    @title = "Ranking manejo defensivo"
+    @pagy, @games = pagy( Game.completed.manejo.order(score: 'DESC', player: "ASC"), items:10 )
+    render :ranking
+  end
+
+  def ranking_petroleo
+    @title = "Ranking petroleo"
+    @pagy, @games = pagy( Game.completed.petroleo.order(score: 'DESC', player: "ASC"), items:10 )
+    render :ranking
   end
 
   private 
@@ -39,5 +52,9 @@ class GamesController < ApplicationController
   end
   def game_params
     params.require(:game).permit(:player, :category_id, :email, :score)
+  end
+
+  def set_time_alert
+    @time_alert = '3'
   end
 end

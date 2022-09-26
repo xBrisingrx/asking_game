@@ -1,6 +1,6 @@
-<h1 class="text-center">Ranking</h1>
+<h1 class="text-center"><%= @title %></h1>
 
-<table class="table table-striped">
+<table class="table table-striped mt-4 shadow-lg p-3 mb-5 bg-body rounded">
   <thead class="table-dark">
     <tr>
       <th>Jugador</th>
@@ -14,7 +14,7 @@
           <td><%= game.player%></td>
           <th> 
             <%= game.score%>
-            <% if game.score > 1 %>
+            <% if game.score > 3 %>
               <%= inline_svg_tag 'star.svg', with: 20, height: 20%>
             <% end %> 
           </th>
@@ -23,6 +23,6 @@
     <%end%>
   </tbody>
 </table>
-  <div class="pagination">
-    <%== pagy_bootstrap_nav(@pagy, link_extra: 'data-turbo-action="advance"') %>
-  </div>
+<div class="pagination">
+  <%== pagy_bootstrap_nav(@pagy, link_extra: 'data-turbo-action="advance"') %>
+</div>

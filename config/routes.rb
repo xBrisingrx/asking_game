@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root "games#index"
-  get "games/ranking", to: "games#ranking"
+  get "games/ranking_manejo", to: "games#ranking_manejo"
+  get "games/ranking_petroleo", to: "games#ranking_petroleo"
   resources :answers
   resources :questions
   resources :categories

@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[ show edit update destroy ]
+  before_action :set_time_alert, only: %i[ create update destroy]
 
   # GET /categories or /categories.json
   def index
@@ -22,7 +23,6 @@ class CategoriesController < ApplicationController
   # POST /categories or /categories.json
   def create
     @category = Category.new(category_params)
-
     respond_to do |format|
       if @category.save
         format.html { redirect_to categories_path, notice: "Categoría creada con éxito." }
@@ -50,7 +50,6 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1 or /categories/1.json
   def destroy
     @category.destroy
-
     respond_to do |format|
       format.html { redirect_to categories_url, notice: "La categoría fue eliminada." }
       format.json { head :no_content }
@@ -66,5 +65,9 @@ class CategoriesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def category_params
       params.require(:category).permit(:name, :image)
+    end
+
+    def set_time_alert
+      @time_alert = '3'
     end
 end
