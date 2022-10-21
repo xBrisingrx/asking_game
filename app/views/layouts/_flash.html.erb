@@ -11,4 +11,14 @@
       <%= alert %>
     </div>
   <% end %>
+  <% if success.present? %>
+    <div class="alert alert-success alert-dismissible text-center" role="alert" >
+      <%= success %>
+    </div>
+  <% end %>
+  <% if warning.present? %>
+    <div class="alert alert-warning alert-dismissible text-center" role="alert" >
+      <%= warning %>
+    </div>
+  <% end %>
 </div>

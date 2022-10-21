@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import FilterController from "./filter_controller"
+application.register("filter", FilterController)
+
 import FinishController from "./finish_controller"
 application.register("finish", FinishController)
 

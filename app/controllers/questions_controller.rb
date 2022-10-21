@@ -5,7 +5,9 @@ class QuestionsController < ApplicationController
 
   # GET /questions or /questions.json
   def index
-    @pagy, @questions = pagy(Question.all, items: 10)
+    filtered = Question.where("question LIKE ?", "%#{params[:filter]}%")
+    @pagy, @questions = pagy(filtered.all, items: 10)
+    @filter = params[:filter]
   end
 
   # GET /questions/1 or /questions/1.json

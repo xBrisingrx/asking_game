@@ -1,7 +1,7 @@
 <%= turbo_stream.update "game" do %>
   <%= form_with model: @game_answer do |form| %>
     <div class="col">
-      <h3 class="demo-panel-title text-center h2 my-4"><%= @question.question %></h3>
+      <h3 class="demo-panel-title text-center h2 my-4"><%= @question.question %> <%= question_was_correct %></h3>
       <%= form.hidden_field :question_id, value: @question.id %>
       <%= form.hidden_field :game_id, value: @game_answer.game_id %>
       <div class="shadow-lg p-3 mb-5 bg-body rounded col-8 mx-auto">

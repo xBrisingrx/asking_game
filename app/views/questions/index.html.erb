@@ -1,5 +1,13 @@
 <h1>Preguntas</h1>
 <%= link_to"<i class='fui-plus'></i> Nueva pregunta".html_safe, new_question_path, class: "btn btn-primary mt-2 mb-4" %>
+
+<div class='row mb-2 col-4' id='form-questions-filter'>
+    <%= form_with url: questions_path, method: :get, 
+      data: { controller: "filter", action: "input->filter#submit", turbo_frame: "questions_table_body", turbo_action: "advance" } do %>
+      <%= text_field_tag "filter", nil, placeholder: "Buscar...", class: "form-control", value: @filter, autofocus:true %>
+    <% end %>
+  </div>
+
 <table class="table table-hover">
   <thead class="table-dark">
     <tr>
@@ -9,8 +17,8 @@
       <td>Acciones</td>
     </tr>
   </thead>
-  <tbody>
-    <%= turbo_frame_tag "questions-#{@pagy.page}" do%>
+  <tbody id="questions_table_body">
+    <%= turbo_frame_tag "questions" do%>
       <%= render @questions %>
     <%end%>
   </tbody>

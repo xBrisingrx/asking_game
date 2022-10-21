@@ -21,6 +21,7 @@ class GamesController < ApplicationController
         turbo_stream.replace("game", partial: "game_answers/new", 
           locals: { question: @question, 
             game_id: @game.id, 
+            question_was_correct: 'naditas',
             game_answer: GameAnswer.new, 
             submit_button: 'Siguiente'
           })

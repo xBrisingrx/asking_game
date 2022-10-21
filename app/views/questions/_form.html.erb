@@ -22,6 +22,14 @@
     </select>
   </div>
 
+  <% if question.image.attached? %>
+    <div class="mt-2 mb-2 row">
+      <div class="col-4">
+        <%= image_tag( question.image , class: "rounded float-start d-block", size: "100X100", alt: "Question image") %>
+      </div>
+    </div>
+  <% end %>
+
   <div class="form-group mt-2">
     <%= form.label :image, "Imagen" %>
     <%= form.file_field :image %>

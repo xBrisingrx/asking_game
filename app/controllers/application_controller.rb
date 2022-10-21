@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   
   helper_method :current_user, :logged_in?
   before_action :no_login
-
+  add_flash_types :info, :error, :warning, :success
   def current_user
     if session[:user_id]
       @current_user ||= User.find(session[:user_id])
