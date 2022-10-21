@@ -10,7 +10,7 @@
             <%= image_tag(question.image, size: "200X200", alt: "Question image", class: "rounded") %>
           </div>
         <% end %>
-        <% question.answers.each do |answer|%>
+        <% question.answers.actives.each do |answer|%>
           <div class="form-check">
             <%= form.radio_button :answer_id, answer.id, class:"form-check-input" %>
             <label class="form-check-label">

@@ -4,7 +4,7 @@ class AnswersController < ApplicationController
 
   # GET /answers or /answers.json
   def index
-    @answers = Answer.where(question_id: params[:question_id])
+    @answers = Answer.where(question_id: params[:question_id], active: true)
   end
 
   # GET /answers/1 or /answers/1.json

@@ -8,6 +8,10 @@ class QuestionsController < ApplicationController
     filtered = Question.where("question LIKE ?", "%#{params[:filter]}%")
     @pagy, @questions = pagy(filtered.all, items: 10)
     @filter = params[:filter]
+
+    # Question.all.each do |question|
+    #   question.answers.create(answer: "Se quedo sin tiempo", is_correct: false, active: false)
+    # end
   end
 
   # GET /questions/1 or /questions/1.json
