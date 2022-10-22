@@ -25,4 +25,10 @@
       </div>
     </div>
   <% end %>
+
+  <%= turbo_frame_tag "contdown" do %>
+    <div data-controller="countdown" class="number">
+
+    </div>
+  <% end %>
 <% end %>

@@ -7,7 +7,7 @@ export default class extends Controller {
   }
   
   connect() {
-    console.info( this.correct )
+    console.info( this.correctValue )
   }
 
   selected(event) {
